@@ -3,7 +3,7 @@
 
 <h1>hello</h1> -->
 
-<ng-template #content let-c="close" let-d="dismiss">
+<ng-template #mymodal let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
     <button
@@ -17,16 +17,12 @@
     <p>Hello, World!</p>
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="downloadApp()"
-    >
-      Save
+    <button type="button" class="btn btn-outline-dark" (click)="downloadApp()">
+      Download to the screen
     </button>
   </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">
+<button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">
   Launch demo modal
 </button>

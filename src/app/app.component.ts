@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  AfterViewInit,
+  Output,
+  ViewChild,
+  ElementRef,
+  OnInit,
+} from '@angular/core';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-root',
@@ -6,15 +15,23 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.scss'],
   providers: [NgbModalConfig, NgbModal],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
+  downloadState: boolean = false;
+  @ViewChild('mymodal') mymodal: ElementRef | undefined;
+
   constructor(config: NgbModalConfig, private modalService: NgbModal) {
     // customize default values of modals used by this component tree
     config.backdrop = 'static';
     config.keyboard = false;
   }
 
-  open(content: any) {
-    this.modalService.open(content);
+  ngAfterViewInit(): void {
+    this.open(this.mymodal);
+  }
+
+  open(mymodal: any) {
+    this.modalService.open(mymodal);
+    this.downloadState = true;
   }
 
   downloadApp(): void {}
