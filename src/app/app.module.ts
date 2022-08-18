@@ -13,12 +13,12 @@ import { Observable } from 'rxjs';
   declarations: [AppComponent],
   imports: [BrowserModule, ServiceWorkerModule.register('ngsw-worker.js')],
   providers: [
-    {
-      // provide: SwRegistrationOptions,
-      // useFactory: () => ({
-      //   enabled: true && environment.production,
-      // }),
-    },
+    // {
+    //   provide: SwRegistrationOptions,
+    //   useFactory: () => ({
+    //     enabled: true && environment.production,
+    //   }),
+    // },
   ],
   bootstrap: [AppComponent],
 })
