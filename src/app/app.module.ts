@@ -8,18 +8,18 @@ import {
 } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
+import { ToggleService } from './services/toggle.service';
 
-@Output()
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, ServiceWorkerModule.register('ngsw-worker.js')],
   providers: [
-    {
-      provide: SwRegistrationOptions,
-      useFactory: () => ({
-        enabled: true && environment.production,
-      }),
-    },
+    // {
+    //   provide: SwRegistrationOptions,
+    //   useFactory: () => ({
+    //     enabled: true && environment.production,
+    //   }),
+    // },
   ],
   bootstrap: [AppComponent],
 })
