@@ -14,17 +14,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    ServiceWorkerModule.register('ngsw-worker.js'),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
     NgbModule,
   ],
-  providers: [
-    {
-      provide: SwRegistrationOptions,
-      useFactory: () => ({
-        enabled: environment.production,
-      }),
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
