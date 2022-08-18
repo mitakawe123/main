@@ -8,17 +8,18 @@ import {
 } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, ServiceWorkerModule.register('ngsw-worker.js')],
+  imports: [BrowserModule, ServiceWorkerModule.register('ngsw-worker.js'), NgbModule],
   providers: [
-    // {
-    //   provide: SwRegistrationOptions,
-    //   useFactory: () => ({
-    //     enabled: true && environment.production,
-    //   }),
-    // },
+    {
+      provide: SwRegistrationOptions,
+      useFactory: () => ({
+        enabled: true && environment.production,
+      }),
+    },
   ],
   bootstrap: [AppComponent],
 })

@@ -1,20 +1,21 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [NgbModalConfig, NgbModal],
 })
-export class AppComponent implements OnInit {
-  constructor() {}
-  promptAnswer: boolean = false;
-
-  propmtAnswerFunction(): boolean {
-    return (this.promptAnswer = true);
+export class AppComponent {
+  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+    // customize default values of modals used by this component tree
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
-  cancelDownload(): boolean {
-    return (this.promptAnswer = false);
+  open(content: any) {
+    this.modalService.open(content);
   }
-  ngOnInit(): void {}
+
+  downloadApp(): void {}
 }
