@@ -21,7 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     {
       provide: SwRegistrationOptions,
       useFactory: () => ({
-        enabled: false && environment.production,
+        enabled: environment.production,
       }),
     },
   ],
