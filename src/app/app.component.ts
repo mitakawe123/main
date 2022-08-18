@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ToggleService } from './services/toggle.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +6,15 @@ import { ToggleService } from './services/toggle.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(public toggleService: ToggleService) {}
+  constructor() {}
+  promptAnswer: boolean = false;
+
+  propmtAnswerFunction(): boolean {
+    return (this.promptAnswer = true);
+  }
+
+  cancelDownload(): boolean {
+    return (this.promptAnswer = false);
+  }
   ngOnInit(): void {}
 }
