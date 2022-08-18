@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Output } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -8,6 +8,8 @@ import {
 } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { Observable } from 'rxjs';
+
+@Output()
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, ServiceWorkerModule.register('ngsw-worker.js')],
@@ -15,7 +17,7 @@ import { Observable } from 'rxjs';
     {
       provide: SwRegistrationOptions,
       useFactory: () => ({
-        enabled: true,
+        enabled: true && environment.production,
       }),
     },
   ],
